@@ -11,7 +11,7 @@ services:
     ports:
       - 3307:3306
     networks:
-      - mztalk-mysql-net
+      - springboot-mysql-net
   test-app:
     build:
       context: ./
@@ -21,7 +21,7 @@ services:
     depends_on:
       - db-mysql
     networks:
-      - mztalk-mysql-net
+      - springboot-mysql-net
 
 networks:
   springboot-mysql-net:
