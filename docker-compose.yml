@@ -11,11 +11,12 @@ services:
       MYSQL_PASSWORD: 1234
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - 3307:3306
+      - 3306:3306
     networks:
       - mztalk-mysql-net
   test-app:
     build:
+    restart: always
       context: ./
       dockerfile: Dockerfile
     ports:
