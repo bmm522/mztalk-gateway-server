@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  db-mysql:
+  mztalk-mysql:
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: gateway
@@ -11,7 +11,7 @@ services:
     ports:
       - 3307:3306
     networks:
-      - springboot-mysql-net
+      - mztalk-mysql-net
   test-app:
     build:
       context: ./
@@ -19,10 +19,10 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - db-mysql
+      - mztalk-mysql
     networks:
-      - springboot-mysql-net
+      - mztalk-mysql-net
 
 networks:
-  springboot-mysql-net:
+  mztalk-mysql-net:
          driver: bridge
