@@ -1,0 +1,108 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka:  true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: gateway-api
+    prefer-ip-address: true
+
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gatewayservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gateway?serverTimezone=Asia/Seoul
+    username: gateway
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      show-sql: true
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+#            allowedOrigins: "http://127.0.0.1/5501"
+            allowedOriginPatterns: "*"
+            allow-credentials: true   #추가
+            allowedHeaders:
+              - x-requested-with
+              - Authorization
+              - content-type
+              - credential
+              - X-AUTH-TOKEN
+              - X-CSRF-TOKEN
+              - RefreshToken
+              - UserNo
+              - UserNickname
+            allowedMethods:
+              - POST
+              - GET
+              - PUT
+              - OPTIONS
+              - DELETE
+              - PATCH
+            exposedHeaders:
+              - Authorization
+              - RefreshToken
+              - LoginResult
+              - UserNo
+              - UserNickname
+      routes:
+        - id: mentor-service
+          uri: http://localhost:8080/mentors
+          predicates:
+            - Path=/mentors/**
+          filters:
+            - UserJwtAuthorizationFilter
+            - MentorFilter
+        - id: bung-service
+          uri: http://localhost:8081/bung
+          predicates:
+            - Path=/bung/**
+          filters:
+            - UserJwtAuthorizationFilter
+            - BungFilter
+        - id: auction-service
+          uri: http://localhost:8082/auction
+          predicates:
+            - Path=/auction/**
+          filters:
+            - UserJwtAuthorizationFilter
+            - AuctionFilter
+        - id: chat-service
+          uri: http://localhost:8083/chat
+          predicates:
+            - Path=/chat/**
+        - id: main-service
+          uri: http://localhost:8084/main
+          predicates:
+            - Path=/main/**
+          filters:
+            - UserJwtAuthorizationFilter
+            - StoryFilter
+        - id: login-service
+          uri: http://localhost:8085/login
+          predicates:
+            - Path=/login/**
+        - id: resource-server
+          uri: http://localhost:8086/resource
+          predicates:
+            - Path=/resource/**
+        - id: chat-server
+          uri: http://localhost:8087/test
+          predicates:
+            - Path=/test/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials Access-Control-Allow-Methods Access-Control-Allow-Headers
