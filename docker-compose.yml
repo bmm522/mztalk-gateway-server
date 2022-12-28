@@ -1,7 +1,7 @@
 version: "3.0"
 
 services:
-  db-mysql:
+  mztalk-mysql:
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: gateway
