@@ -16,7 +16,6 @@ services:
       - mztalk-mysql-net
   test-app:
     build:
-    restart: always
       context: ./
       dockerfile: Dockerfile
     ports:
