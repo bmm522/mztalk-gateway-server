@@ -18,6 +18,10 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3307/gateway
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: dlquf!2tkfkd!2
     ports:
       - 8000:8000
     depends_on:
