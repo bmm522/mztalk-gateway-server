@@ -19,6 +19,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: root
