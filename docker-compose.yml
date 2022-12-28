@@ -24,7 +24,7 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: dlquf!2tkfkd!2
     ports:
-      - 8000:8000
+      - 18000:8000
     depends_on:
       - mztalk-mysql
     networks:
