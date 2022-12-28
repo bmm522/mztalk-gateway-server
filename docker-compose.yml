@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  mztalk-mysql:
+  db-mysql:
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: gateway
@@ -19,7 +19,7 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - mztalk-mysql
+      - db-mysql
     networks:
       - mztalk-mysql-net
 
