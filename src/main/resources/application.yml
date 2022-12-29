@@ -19,7 +19,7 @@ spring:
     name: gatewayservice
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://43.200.113.144:3306/gateway?autoReconnect=true&useSSL=false
     username: gateway
     password: 1234
   jpa:
