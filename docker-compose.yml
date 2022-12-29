@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: dlquf!2tkfkd!2
       MYSQL_USER: gateway
       MYSQL_PASSWORD: 1234
-#       MYSQL_ROOT_HOST: '43.200.113.144'
+      MYSQL_ROOT_HOST: "%"
 #       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - 3306:3306
@@ -17,7 +17,7 @@ services:
       - mztalk-mysql-net
   test-app:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     restart: always
     environment:
