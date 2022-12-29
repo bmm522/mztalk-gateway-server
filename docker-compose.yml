@@ -18,7 +18,7 @@ services:
   test-app:
     build:
       context: .
-      dockerfile: ./docker/mztalk-gateway-server/Dockerfile
+      dockerfile: Dockerfile
     restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
