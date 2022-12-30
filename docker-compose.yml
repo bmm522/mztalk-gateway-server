@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: gateway
       MYSQL_PASSWORD: 1234
-#      MYSQL_ROOT_HOST: "172.22.0.3"
+      MYSQL_ROOT_HOST: "%"
 #       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - 3306:3306
