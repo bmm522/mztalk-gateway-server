@@ -18,7 +18,7 @@ spring:
   application:
     name: gatewayservice
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://mztalk-mysql:3307/gateway?autoReconnect=true&useSSL=false&serverTimezone=UTC
     username: gateway
     password: 1234
