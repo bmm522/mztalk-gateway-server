@@ -22,6 +22,7 @@ services:
     restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_ROOT_PASSWORD: root
       SPRING_DATASOURCE_USERNAME: gateway
       SPRING_DATASOURCE_PASSWORD: 1234
     ports:
