@@ -6,7 +6,7 @@ eureka:
     register-with-eureka:  true
     fetch-registry: true
     service-url:
-      defaultZone: http://mztalk-mysql:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     hostname: gateway-api
     prefer-ip-address: true
@@ -19,7 +19,7 @@ spring:
     name: gatewayservice
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/gateway?autoReconnect=true&useSSL=false
     username: gateway
     password: 1234
   jpa:
