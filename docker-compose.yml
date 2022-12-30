@@ -5,8 +5,8 @@ services:
     image: mysql:5.7
     restart: always
     environment:
+      MYSQL_ROOT_PASSWORD: root    
       MYSQL_DATABASE: gateway
-      MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: gateway
       MYSQL_PASSWORD: 1234
 #       MYSQL_ROOT_HOST: "%"
