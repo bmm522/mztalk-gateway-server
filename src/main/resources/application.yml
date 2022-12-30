@@ -6,7 +6,7 @@ eureka:
     register-with-eureka:  true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://3.39.183.175:8761/eureka
   instance:
     hostname: gateway-api
     prefer-ip-address: true
