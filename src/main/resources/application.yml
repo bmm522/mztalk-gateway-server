@@ -97,7 +97,7 @@ spring:
           predicates:
             - Path=/login/**
         - id: resource-server
-          uri: http://localhost:8086/resource
+          uri: http://52.79.34.80:8086/resource
           predicates:
             - Path=/resource/**
         - id: chat-server
