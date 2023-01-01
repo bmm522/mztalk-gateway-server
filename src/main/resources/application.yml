@@ -93,7 +93,7 @@ spring:
             - UserJwtAuthorizationFilter
             - StoryFilter
         - id: login-service
-          uri: http://localhost:8085/login
+          uri: http://52.78.207.50:8085/login
           predicates:
             - Path=/login/**
         - id: resource-server
