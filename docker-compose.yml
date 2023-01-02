@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   mztalk-mysql:
-    image: mysql:8.0
+    image: mysql:5.7
     command: ['mysqld', '--init-command=SET GLOBAL host_cache_size=0']
     restart: always
     environment:
