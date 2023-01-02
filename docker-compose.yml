@@ -19,7 +19,7 @@ services:
       - mztalk-mysql-net
   test-app:
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
     restart: always
     environment:
