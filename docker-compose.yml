@@ -2,7 +2,8 @@ version: "3.7"
 
 services:
   mztalk-mysql:
-    image: mysql:5.7
+    image: mysql:8.0
+    command: ['--explicit_defaults_for_timestamp']
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root    
