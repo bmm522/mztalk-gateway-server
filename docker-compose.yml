@@ -13,6 +13,8 @@ services:
 #       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - 3306:3306
+    volumes:
+      - ./docker-db:/var/lib/mysql
     networks:
       - mztalk-mysql-net
   test-app:
