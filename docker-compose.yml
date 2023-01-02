@@ -19,13 +19,13 @@ services:
       - mztalk-mysql-net
   test-app:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     restart: always
-#     environment:
-#       SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
-#       SPRING_DATASOURCE_USERNAME: gateway
-#       SPRING_DATASOURCE_PASSWORD: 1234
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: gateway
+      SPRING_DATASOURCE_PASSWORD: 1234
     ports:
       - 8000:8000
     depends_on:
