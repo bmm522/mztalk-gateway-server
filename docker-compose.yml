@@ -3,7 +3,7 @@ version: "3.7"
 services:
   mztalk-mysql:
     image: mysql:5.7
-    command: ['bash', '-c', 'mysqld --init-command=SET GLOBAL host_cache_size=0 && exec mysqld']
+    command: ['mysqld', '--explicit_defaults_for_timestamp']
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root    
