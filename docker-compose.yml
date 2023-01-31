@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  mztalk-mysql:
+    image: mysql:5.7
+    command: ['mysqld', '--explicit_defaults_for_timestamp']
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root    
+      MYSQL_DATABASE: gateway
+      MYSQL_USER: gateway
+      MYSQL_PASSWORD: 1234
+#       MYSQL_ROOT_HOST: "%"
+#       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker-db:/var/lib/mysql
+    networks:
+      - mztalk-mysql-net
+  test-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: gateway
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - 8000:8000
+    depends_on:
+      - mztalk-mysql
+    networks:
+      - mztalk-mysql-net
+
+networks:
+  mztalk-mysql-net:
+         driver: bridge

@@ -6,7 +6,7 @@ eureka:
     register-with-eureka:  true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://3.39.183.175:8761/eureka
   instance:
     hostname: gateway-api
     prefer-ip-address: true
@@ -18,17 +18,21 @@ spring:
   application:
     name: gatewayservice
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gateway?serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mztalk-mysql:3306/gateway?autoReconnect=true&useSSL=false
     username: gateway
     password: 1234
   jpa:
     hibernate:
+<<<<<<< HEAD
       ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+=======
+      ddl-auto: create
+>>>>>>> f58b63fe2e8118664db5ff5b74daac6d28b0e35e
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       show-sql: true
@@ -95,11 +99,15 @@ spring:
             - UserJwtAuthorizationFilter
             - StoryFilter
         - id: login-service
+<<<<<<< HEAD
           uri: lb://login-service
+=======
+          uri: http://52.78.207.50:8085/login
+>>>>>>> f58b63fe2e8118664db5ff5b74daac6d28b0e35e
           predicates:
             - Path=/login/**
         - id: resource-server
-          uri: http://localhost:8086/resource
+          uri: http://52.79.34.80:8086/resource
           predicates:
             - Path=/resource/**
       default-filters:
