@@ -24,7 +24,11 @@ spring:
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       show-sql: true
@@ -37,9 +41,10 @@ spring:
             allowedOriginPatterns: "*"
             allow-credentials: true   #추가
             allowedHeaders:
+              - UserRole
               - x-requested-with
               - Authorization
-              - content-type
+              - Content-Type
               - credential
               - X-AUTH-TOKEN
               - X-CSRF-TOKEN
@@ -59,6 +64,8 @@ spring:
               - LoginResult
               - UserNo
               - UserNickname
+              - UserRole
+              - Content-Type
       routes:
         - id: mentor-service
           uri: http://localhost:8080/mentors
@@ -72,7 +79,7 @@ spring:
           predicates:
             - Path=/bung/**
           filters:
-            - UserJwtAuthorizationFilter
+#            - UserJwtAuthorizationFilter
             - BungFilter
         - id: auction-service
           uri: http://localhost:8082/auction
@@ -85,12 +92,12 @@ spring:
           uri: http://localhost:8083/chat
           predicates:
             - Path=/chat/**
-        - id: main-service
-          uri: http://localhost:8084/main
+        - id: story-service
+          uri: http://localhost:8084/story
           predicates:
-            - Path=/main/**
+            - Path=/story/**
           filters:
-            - UserJwtAuthorizationFilter
+#            - UserJwtAuthorizationFilter
             - StoryFilter
         - id: login-service
           uri: http://localhost:8085/login
