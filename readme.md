@@ -1,6 +1,6 @@
 # MZTALK-GatewayAPIServer
 
-## Dsecription
+## Description
 - 🔊프로젝트 소개
   - MZTALK의 모듈화 된 각 서비스의 로드밸런싱, JWT 유효성 검증, CORS 처리를 위해 만든 API 서버
   - MZTALK 프로젝트 : https://github.com/bmm522/mztalk
